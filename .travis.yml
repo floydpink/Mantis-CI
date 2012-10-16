@@ -16,4 +16,4 @@ after_script:
   - cp ../bin/TravisCI-release.apk .
   - git add .
   - git commit -a -m "Committed from CI (build number - $TRAVIS_JOB_ID)"
-  - git push --repo https://floydpink-public:Public-FloydPink@github.com/FloydPink-Public/Travis-CI.git
+  - git push --repo https://floydpink-public:Public-FloydPink@github.com/FloydPink-Public/Travis-CI.git master
