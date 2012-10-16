@@ -2,14 +2,14 @@ language: java
 before_install:
   - wget http://dl.google.com/android/android-sdk_r20.0.3-linux.tgz
   - tar -zxf android-sdk_r20.0.3-linux.tgz
-  - export ANDROID_HOME=~/builds/floydpink/travis-ci/android-sdk-linux
+  - export ANDROID_HOME=~/builds/floydpink/Travis-CI/android-sdk-linux
   - export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
   - android update sdk --filter 1,3,10 --no-ui --force
 script:
   - ant release
 after_script:
   - git clone https://github.com/FloydPink-Public/travis-ci.git
-  - cd travis-ci
+  - cd Travis-CI
   - git remote add -f source https://github.com/floydpink/travis-ci.git
   - git pull source master
   - cp ../bin/Swoosh-release.apk bin/
