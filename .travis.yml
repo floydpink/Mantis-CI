@@ -3,7 +3,7 @@ language: java
 before_install:
   - wget http://dl.google.com/android/android-sdk_r20.0.3-linux.tgz
   - tar -zxf android-sdk_r20.0.3-linux.tgz
-  - export ANDROID_HOME=~/builds/floydpink/Travis-CI/android-sdk-linux
+  - export ANDROID_HOME=~/builds/MobileGurus/Travis-CI/android-sdk-linux
   - export PATH=${PATH}:${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools
   - android update sdk --filter 1,3,10 --no-ui --force
 # compile
@@ -15,5 +15,5 @@ after_script:
   - cd Travis-CI
   - cp ../bin/TravisCI-release.apk .
   - git add .
-  - git commit -a -m "Committed from CI (build number - $TRAVIS_JOB_ID)"
+  - git commit -a -m "Committed from CI (build number - $((TRAVIS_JOB_ID - 1)))"
   - git push --repo https://floydpink-public:Public-FloydPink@github.com/FloydPink-Public/Travis-CI.git
