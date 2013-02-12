@@ -19,6 +19,7 @@ script:
   - ant release
 after_script:
   - mkdir tempclone
+  - cd tempclone
   - git clone $REPO.git Travis-CI
   - cd Travis-CI
   - git config user.email "imbleedingme@googlemail.com"
