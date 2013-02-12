@@ -26,7 +26,7 @@ after_script:
   - git config user.name "Floyd Pink"
   - cp ../../bin/TravisCI-release.apk deploy/ -f
   - git add .
-  - git commit -a -m "Committed from CI (build number - $((TRAVIS_JOB_ID - 1)))"
+  - git commit -a -m "Committed from CI (build number - $((TRAVIS_JOB_ID - 1))) [ci skip]"
   - git push origin master
 env:
   global:
