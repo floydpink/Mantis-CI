@@ -1,12 +1,7 @@
 requirejs.config({
     baseUrl:'js/app',
     paths:{
-        lib:'../lib',
-        'jquery':'jquery-1.9.0',
-        'jquery.mobile':'jquery.mobile-1.3.0',
-        'handlebars':'handlebars-1.0.0-rc.3',
-        'ember':'ember-1.0.0-rc.1',
-        'cordova':'cordova-2.1.0'
+        lib:'../lib'
     }
 });
 
