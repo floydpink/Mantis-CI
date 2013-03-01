@@ -3,32 +3,52 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Travis-CI for Android</title>
+    <title>Travis-CI</title>
     <link rel="stylesheet" href="css/jquery.mobile-1.3.0.css"/>
+    <link rel="stylesheet" href="css/style.css"/>
 </head>
 <body>
 
-<script type="text/x-handlebars" data-template-name="main">
+<div data-role="page" id="splash">
+    <img src="css/images/travis-ci.png">
+    <h3>Travis-CI for Android</h3>
+</div>
+
+<script type="text/x-handlebars" data-template-name="_header">
     <div data-role="header">
         <h1>Travis-CI for Android</h1>
     </div>
+</script>
 
-    <div data-role="content">
-
-    </div>
-
+<script type="text/x-handlebars" data-template-name="_footer">
     <div data-role="footer">
         <small>&copy; 2013 <a href="https://github.com/floydpink">@floydpink</a></small>
     </div>
 </script>
-<div data-role="page" id="splash">Splash Screen Goes Here</div>
 
-<script src="js/jquery-1.9.0.js"></script>
-<script src="js/handlebars-1.0.0-rc.3.js"></script>
-<script src="js/ember-1.0.0-rc.1.js"></script>
-<script src="js/cordova-2.1.0.js"></script>
-<script src="js/script.js"></script>
-<script src="js/jquery.mobile-1.3.0.js"></script>
+<script type="text/x-handlebars" data-template-name="layout">
+    {{ partial "header" }}
+
+    <div data-role="content">
+        {{yield}}
+    </div>
+
+    {{ partial "footer" }}
+</script>
+
+<script type="text/x-handlebars" data-template-name="main">
+    <h1>Hello I am main!</h1>
+    <span>{{mainProperty}}</span>
+</script>
+
+<script data-main="js/main.js" src="js/lib/require.js"></script>
+
+<script src="js/lib/jquery-1.9.0.js"></script>
+<script src="js/lib/handlebars-1.0.0-rc.3.js"></script>
+<script src="js/lib/ember-1.0.0-rc.1.js"></script>
+<script src="js/lib/cordova-2.1.0.js"></script>
+<script src="js/main.js"></script>
+<script src="js/lib/jquery.mobile-1.3.0.js"></script>
 
 </body>
 </html>
