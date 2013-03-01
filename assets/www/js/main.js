@@ -8,12 +8,12 @@ requirejs.config({
         'jquery':{
             exports:'jQuery'
         },
+        'handlebars':{
+            exports:'Handlebars'
+        },
         'ember':{
             deps:['jquery', 'handlebars'],
             exports:'Ember'
-        },
-        'handlebars':{
-            exports:'Handlebars'
         }
     },
     hbs:{
@@ -22,24 +22,18 @@ requirejs.config({
     }
 });
 
-requirejs([
+var Travis = requirejs([
     'jquery',
-    'ember',
     'app/app',
     'jquery.mobile'
-], function ($, ember, Travis) {
-    var Travis = Ember.Application.create({
-        ready:function () {
-            console.log('Ember is ready');
-        }
-    });
+], function ($, Travis) {
 
-    Travis.Router.map(function () {
-        this.route('builds');
+    $(document).ready(function () {
+        console.log('$ document ready');
     });
 
     $(document).on('mobileinit', function () {
-        console.log('in mobileinit event');
+        console.log('mobileinit event');
         $.mobile.ajaxEnabled = false;
         $.mobile.linkBindingEnabled = false;
         $.mobile.hashListeningEnabled = false;
@@ -51,15 +45,8 @@ requirejs([
         });
     });
 
-
-    $('#splash').on('pageinit', function () {
-        var mainView = Travis.get('mainView');
-
-        if (!mainView) {
-            mainView = Travis.MainView.create({});
-            Travis.set('mainView', mainView);
-            mainView.append();
-        }
+    $(document).on('pageinit', function () {
+        console.log('pageinit event');
     });
 
     return Travis;
