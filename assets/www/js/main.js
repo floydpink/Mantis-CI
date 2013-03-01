@@ -1,17 +1,33 @@
 requirejs.config({
-    baseUrl:'js/app',
+    baseUrl:'js/lib',
     paths:{
-        lib:'../lib'
+        app:'../app',
+        template:'../../template'
+    },
+    shim:{
+        'jquery':{
+            exports:'jQuery'
+        },
+        'ember':{
+            deps:['jquery', 'handlebars'],
+            exports:'Ember'
+        },
+        'handlebars':{
+            exports:'Handlebars'
+        }
+    },
+    hbs:{
+        templateExtension:'hbs',
+        baseDir:'template'
     }
 });
 
 requirejs([
-    'lib/jquery',
-    'lib/ember',
-    'lib/cordova',
-    'app',
-    'lib/jquery.mobile'
-], function ($, ember, cordova, Travis) {
+    'jquery',
+    'ember',
+    'app/app',
+    'jquery.mobile'
+], function ($, ember, Travis) {
     var Travis = Ember.Application.create({
         ready:function () {
             console.log('Ember is ready');
