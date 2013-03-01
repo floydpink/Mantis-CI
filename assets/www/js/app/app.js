@@ -22,7 +22,10 @@ define([
     Travis.Router = Ember.Router.extend({
         location:'hash',
         enableLogging:true,
-        root: Travis.RootState
+        root: Travis.RootState,
+        map:function(){
+            this.route('about');
+        }
     });
 
     //Routes
@@ -35,6 +38,10 @@ define([
     //Controllers
     Travis.MainController = Ember.ObjectController.extend({
         mainProperty:"some invalid string"
+    });
+
+    Travis.AboutController = Ember.ObjectController.extend({
+        aboutVersionString:"0.0.0.1"
     });
 
     //Views
@@ -52,6 +59,11 @@ define([
             console.log(this.$());
             $.mobile.changePage(this.$());
         }
+    });
+
+    Travis.AboutView = Travis.PageView.extend({
+        templateName:'about',
+        id:'about-view'
     });
 
     //inject Main view

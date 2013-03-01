@@ -38,6 +38,11 @@
 
 <script type="text/x-handlebars" data-template-name="main">
     <h1>Hello I am main!</h1>
+    {{#linkTo about}}About{{/linkTo}}
+</script>
+
+<script type="text/x-handlebars" data-template-name="about">
+    <h1>Hello I am about!</h1>
 </script>
 
 <script data-main="js/main.js" src="js/lib/require.js"></script>
