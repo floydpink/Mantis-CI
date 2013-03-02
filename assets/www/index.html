@@ -9,41 +9,10 @@
 </head>
 <body>
 
-<div data-role="page" id="splash">
+<div id="splash">
     <img src="css/images/travis-ci.png">
     <h3>Travis-CI for Android</h3>
 </div>
-
-<script type="text/x-handlebars" data-template-name="_header">
-    <div data-role="header">
-        <h1>Travis-CI for Android</h1>
-    </div>
-</script>
-
-<script type="text/x-handlebars" data-template-name="_footer">
-    <div data-role="footer">
-        <small>&copy; 2013 <a href="https://github.com/floydpink">@floydpink</a></small>
-    </div>
-</script>
-
-<script type="text/x-handlebars" data-template-name="layout">
-    {{ partial "header" }}
-
-    <div data-role="content">
-        {{yield}}
-    </div>
-
-    {{ partial "footer" }}
-</script>
-
-<script type="text/x-handlebars" data-template-name="main">
-    <h1>Hello I am main!</h1>
-    {{#linkTo about}}About{{/linkTo}}
-</script>
-
-<script type="text/x-handlebars" data-template-name="about">
-    <h1>Hello I am about!</h1>
-</script>
 
 <script data-main="js/main.js" src="js/lib/require.js"></script>
 

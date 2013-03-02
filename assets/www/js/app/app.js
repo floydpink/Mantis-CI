@@ -1,81 +1,43 @@
 define([
-    'ember'
-], function (Ember) {
-    var Travis = Ember.Application.create({
-        ready:function () {
-            console.log('Ember is ready');
-        }
-    });
+    'jquery',
+    'app/Travis'
+], function ($) {
+    var appStart = function () {
 
-    Travis.RootState = Ember.State.extend({
-        index : Ember.State.extend({
-            route : '/'
-        }),
-        main: Ember.State.extend({
-            route : '/main',
-            index : Ember.State.extend({
-                route : '/'
-            })
-        })
-    });
+        // jQuery ready - DOM loaded
+        $(document).ready(function () {
+            console.log('$ document ready');
+        });
 
-    Travis.Router = Ember.Router.extend({
-        location:'hash',
-        enableLogging:true,
-        root: Travis.RootState,
-        map:function(){
-            this.route('about');
-        }
-    });
+        // jQuery mobile config - on mobile init
+        $(document).on('mobileinit', function () {
+            console.log('mobileinit event');
+            $.mobile.ajaxEnabled = false;
+            // Prevents all anchor click handling including the addition of active button state and alternate link bluring.
+            $.mobile.linkBindingEnabled = false;
+            // Disabling this will prevent jQuery Mobile from handling hash changes
+            $.mobile.hashListeningEnabled = false;
+            $.mobile.pushStateEnabled = false;
 
-    //Routes
-    Travis.IndexRoute = Ember.Route.extend({
-        setupController:function (controller, model) {
-            debugger;
-        }
-    });
+            // Remove page from DOM when it's being replaced (if you use pages)
+            $('div[data-role="page"]').on('pagehide', function (event, ui) {
+                $(event.currentTarget).remove();
+            });
+        });
 
-    //Controllers
-    Travis.MainController = Ember.ObjectController.extend({
-        mainProperty:"some invalid string"
-    });
+        // jqm pageinit
+        $(document).on('pageinit', function () {
+            console.log('pageinit event');
+        });
 
-    Travis.AboutController = Ember.ObjectController.extend({
-        aboutVersionString:"0.0.0.1"
-    });
+        //remove splash
+        $('#splash').detach();
 
-    //Views
-    Travis.PageView = Ember.View.extend({
-        attributeBindings:['data-role'],
-        'data-role':'page',
-        layoutName:'layout'
-    });
+        // load jQuery Mobile
+        require(['jqm'], function (jqm) {
+            console.log('jqm loaded');
+        });
+    };
 
-    Travis.MainView = Travis.PageView.extend({
-        templateName:'main',
-        id:'main-view',
-        didInsertElement:function () {
-            console.log('main inserted');
-            console.log(this.$());
-            $.mobile.changePage(this.$());
-        }
-    });
-
-    Travis.AboutView = Travis.PageView.extend({
-        templateName:'about',
-        id:'about-view'
-    });
-
-    //inject Main view
-    var mainView = Travis.get('mainView');
-
-    if (!mainView) {
-        console.log('mainview is not created');
-        mainView = Travis.MainView.create({});
-        console.log(mainView);
-        Travis.set('mainView', mainView);
-        mainView.append();
-    }
-
-    return Travis;
+    return { start:appStart };
 });

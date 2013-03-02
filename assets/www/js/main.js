@@ -1,53 +1,41 @@
-requirejs.config({
-    baseUrl:'js/lib',
+// amd is causing issues with loading jqm, so disable it
+define.amd = null;
+
+//requirejs config
+require.config({
     paths:{
-        app:'../app',
-        template:'../../template'
+        'jquery':'lib/jquery-1.9.0',
+        'handlebars':'lib/handlebars-1.0.0-rc.3',
+        'hbs':'lib/hbs',
+        'ember':'lib/ember-1.0.0-rc.1',
+        'jqm':'lib/jquery.mobile-1.3.0',
+        'templates':'../templates'
     },
     shim:{
-        'jquery':{
+        jquery:{
             exports:'jQuery'
         },
-        'handlebars':{
+        handlebars:{
             exports:'Handlebars'
         },
-        'ember':{
+        ember:{
             deps:['jquery', 'handlebars'],
             exports:'Ember'
+        },
+        jqm:{
+            deps:['jquery'],
+            exports:'jQuery.mobile'
         }
     },
     hbs:{
         templateExtension:'hbs',
-        baseDir:'template'
+        baseDir:'templates'
     }
 });
 
-var Travis = requirejs([
-    'jquery',
-    'app/app',
-    'jquery.mobile'
-], function ($, Travis) {
-
-    $(document).ready(function () {
-        console.log('$ document ready');
-    });
-
-    $(document).on('mobileinit', function () {
-        console.log('mobileinit event');
-        $.mobile.ajaxEnabled = false;
-        $.mobile.linkBindingEnabled = false;
-        $.mobile.hashListeningEnabled = false;
-        $.mobile.pushStateEnabled = false;
-
-        // Remove page from DOM when it's being replaced (if you use pages)
-        $('div[data-role="page"]').on('pagehide', function (event, ui) {
-            $(event.currentTarget).remove();
-        });
-    });
-
-    $(document).on('pageinit', function () {
-        console.log('pageinit event');
-    });
-
-    return Travis;
+// start our app
+require([
+    'app/app'
+], function (app) {
+    app.start();
 });
