@@ -17,6 +17,13 @@ before_install:
   - android list sdk
   - android update sdk --filter platform-tools,android-10,android-16,android-17,extra-android-support --no-ui --force
   - git submodule update --init --recursive
+  # Setup and run the grunt task to optimize the www submodule
+  - sudo apt-get install nodejs npm
+  - npm install -g grunt-cli
+  - cd assets/www/xp/
+  - npm install
+  - grunt
+  - cd ../../..
 script:
   - ant release
 after_script:
