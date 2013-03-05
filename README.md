@@ -1,7 +1,7 @@
 Travis-CI
 =========
 
-An Android app (done in PhoneGap) for Travis-CI
+An Android app (done in HTML5 using PhoneGap/Cordova) for [Travis-CI](https://travis-ci.org/)
 
 [![Build Status](https://travis-ci.org/floydpink/Travis-CI.png?branch=master)](https://travis-ci.org/floydpink/Travis-CI)
 
