@@ -1,106 +1,172 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="TravisCI" default="help">
+<project
+    name="TravisCI"
+    default="help">
 
-    <!-- The local.properties file is created and updated by the 'android' tool.
-         It contains the path to the SDK. It should *NOT* be checked into
-         Version Control Systems. -->
-    <property file="local.properties" />
+  <!--
+       The local.properties file is created and updated by the 'android' tool.
+       It contains the path to the SDK. It should *NOT* be checked into
+       Version Control Systems.
 
-    <!-- if sdk.dir was not set from one of the property file, then
-         get it from the ANDROID_HOME env var.
-         This must be done before we load project.properties since
-         the proguard config can use sdk.dir -->
-    <property environment="env" />
-    <condition property="sdk.dir" value="${env.ANDROID_HOME}">
-        <isset property="env.ANDROID_HOME" />
-    </condition>
 
-    <!-- The ant.properties file can be created by you. It is only edited by the
-         'android' tool to add properties to it.
-         This is the place to change some Ant specific build properties.
-         Here are some properties you may want to change/update:
+  -->
 
-         source.dir
-             The name of the source directory. Default is 'src'.
-         out.dir
-             The name of the output directory. Default is 'bin'.
+  <property file="local.properties"/>
 
-         For other overridable properties, look at the beginning of the rules
-         files in the SDK, at tools/ant/build.xml
+  <!--
+       if sdk.dir was not set from one of the property file, then
+       get it from the ANDROID_HOME env var.
+       This must be done before we load project.properties since
+       the proguard config can use sdk.dir
 
-         Properties related to the SDK location or the project target should
-         be updated using the 'android' tool with the 'update' action.
 
-         This file is an integral part of the build system for your
-         application and should be checked into Version Control Systems.
+  -->
 
-         -->
-    <property file="ant.properties" />
+  <property environment="env"/>
 
-    <!-- The project.properties file is created and updated by the 'android'
-         tool, as well as ADT.
+  <condition
+      property="sdk.dir"
+      value="${env.ANDROID_HOME}">
 
-         This contains project specific properties such as project target, and library
-         dependencies. Lower level build properties are stored in ant.properties
-         (or in .classpath for Eclipse projects).
+    <isset property="env.ANDROID_HOME"/>
+  </condition>
 
-         This file is an integral part of the build system for your
-         application and should be checked into Version Control Systems. -->
-    <loadproperties srcFile="project.properties" />
+  <!--
+       The ant.properties file can be created by you. It is only edited by the
+       'android' tool to add properties to it.
+       This is the place to change some Ant specific build properties.
+       Here are some properties you may want to change/update:
 
-    <!-- quick check on sdk.dir -->
-    <fail
-            message="sdk.dir is missing. Make sure to generate local.properties using 'android update project' or to inject it through the ANDROID_HOME environment variable."
-            unless="sdk.dir"
-    />
+       source.dir
+           The name of the source directory. Default is 'src'.
+       out.dir
+           The name of the output directory. Default is 'bin'.
 
-    <!--
-        Import per project custom build rules if present at the root of the project.
-        This is the place to put custom intermediary targets such as:
-            -pre-build
-            -pre-compile
-            -post-compile (This is typically used for code obfuscation.
-                           Compiled code location: ${out.classes.absolute.dir}
-                           If this is not done in place, override ${out.dex.input.absolute.dir})
-            -post-package
-            -post-build
-            -pre-clean
-    -->
-    <import file="custom_rules.xml" optional="true" />
+       For other overridable properties, look at the beginning of the rules
+       files in the SDK, at tools/ant/build.xml
 
-    <!-- Import the actual build file.
+       Properties related to the SDK location or the project target should
+       be updated using the 'android' tool with the 'update' action.
 
-         To customize existing targets, there are two options:
-         - Customize only one target:
-             - copy/paste the target into this file, *before* the
-               <import> task.
-             - customize it to your needs.
-         - Customize the whole content of build.xml
-             - copy/paste the content of the rules files (minus the top node)
-               into this file, replacing the <import> task.
-             - customize to your needs.
+       This file is an integral part of the build system for your
+       application and should be checked into Version Control Systems.
 
-         ***********************
-         ****** IMPORTANT ******
-         ***********************
-         In all cases you must update the value of version-tag below to read 'custom' instead of an integer,
-         in order to avoid having your file be overridden by tools such as "android update project"
-    -->
-    <!-- version-tag: 1 -->
-    <import file="${sdk.dir}/tools/ant/build.xml" />
 
-    <target name="runonly">
-        <exec executable="adb">
-            <arg value="shell"/>
-            <arg value="am"/>
-            <arg value="start"/>
-            <arg value="-a"/>
-            <arg value="android.intent.action.MAIN"/>
-            <arg value="-n"/>
-            <arg value="com.floydpink.android.travisci/.MainActivity"/>
-        </exec>
-    </target>
 
-    <target name="run" depends="clean, debug, installd, runonly" />
+  -->
+
+  <property file="ant.properties"/>
+
+  <!--
+       The project.properties file is created and updated by the 'android'
+       tool, as well as ADT.
+
+       This contains project specific properties such as project target, and library
+       dependencies. Lower level build properties are stored in ant.properties
+       (or in .classpath for Eclipse projects).
+
+       This file is an integral part of the build system for your
+       application and should be checked into Version Control Systems.
+
+
+  -->
+
+  <loadproperties srcFile="project.properties"/>
+
+  <!-- quick check on sdk.dir -->
+
+  <fail
+      message="sdk.dir is missing. Make sure to generate local.properties using &apos;android update project&apos; or to inject it through the ANDROID_HOME environment variable."
+      unless="sdk.dir"/>
+
+  <!--
+       'aapt.ignore.assets' is the list of file patterns to ignore under /res and /assets.
+       Default is "!.svn:!.git:.*:<dir>_*:!CVS:!thumbs.db:!picasa.ini:!*.scc:*~"
+
+       Overall patterns syntax is:
+         [!][<dir>|<file>][*suffix-match|prefix-match*|full-match]:more:patterns...
+
+       - The first character flag ! avoids printing a warning.
+       - Pattern can have the flag "<dir>" to match only directories
+         or "<file>" to match only files. Default is to match both.
+       - Match is not case-sensitive.
+
+
+
+  -->
+
+  <property
+      name="aapt.ignore.assets"
+      value="!.svn:!.git:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*.scc:*~:node_modules*:Gruntfile.js:package.json:README.md:lib:app"/>
+
+  <!--
+      Import per project custom build rules if present at the root of the project.
+      This is the place to put custom intermediary targets such as:
+          -pre-build
+          -pre-compile
+          -post-compile (This is typically used for code obfuscation.
+                         Compiled code location: ${out.classes.absolute.dir}
+                         If this is not done in place, override ${out.dex.input.absolute.dir})
+          -post-package
+          -post-build
+          -pre-clean
+
+
+
+  -->
+
+  <import
+      file="custom_rules.xml"
+      optional="true"/>
+
+  <!--
+       Import the actual build file.
+
+       To customize existing targets, there are two options:
+       - Customize only one target:
+           - copy/paste the target into this file, *before* the
+             <import> task.
+           - customize it to your needs.
+       - Customize the whole content of build.xml
+           - copy/paste the content of the rules files (minus the top node)
+             into this file, replacing the <import> task.
+           - customize to your needs.
+
+       ***********************
+       ****** IMPORTANT ******
+       ***********************
+       In all cases you must update the value of version-tag below to read 'custom' instead of an integer,
+       in order to avoid having your file be overridden by tools such as "android update project"
+
+
+
+  -->
+  <!-- version-tag: 1 -->
+
+  <import file="${sdk.dir}/tools/ant/build.xml"/>
+
+  <target name="runonly">
+
+    <exec executable="adb">
+
+      <arg value="shell"/>
+
+      <arg value="am"/>
+
+      <arg value="start"/>
+
+      <arg value="-a"/>
+
+      <arg value="android.intent.action.MAIN"/>
+
+      <arg value="-n"/>
+
+      <arg value="com.floydpink.android.travisci/.MainActivity"/>
+    </exec>
+  </target>
+
+  <target
+      name="run"
+      depends="clean, debug, installd, runonly"/>
 
 </project>
