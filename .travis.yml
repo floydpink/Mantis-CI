@@ -8,10 +8,8 @@ before_install:
   # Disable SSH server fingerprint verification
   - echo -e "Host github.com\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
   # Set up android build environment
-  - unset UCF_FORCE_CONFFOLD
-  - export UCF_FORCE_CONFFNEW=YES
   - sudo apt-get update -qq
-  - if [ `uname -m` = x86_64 ]; then sudo DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install -qq --force-yes libgd2-xpm ia32-libs ia32-libs-multiarch; fi
+  - if [ `uname -m` = x86_64 ]; then sudo DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confnew" install -qq --force-yes libgd2-xpm ia32-libs ia32-libs-multiarch; fi
   - wget http://dl.google.com/android/android-sdk_r21.0.1-linux.tgz
   - tar xzf android-sdk_r21.0.1-linux.tgz
   - export ANDROID_HOME=$PWD/android-sdk-linux
