@@ -22,7 +22,7 @@ before_install:
   - npm install -g grunt-cli
   - cd assets/www/xp/
   - npm install
-  - grunt deploy
+  - grunt build
   - cd ../../..
 script:
   - ant release
