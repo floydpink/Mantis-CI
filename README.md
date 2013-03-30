@@ -3,6 +3,8 @@ Travis-CI
 
 An Android app (done in HTML5 using PhoneGap/Cordova) for [Travis-CI](https://travis-ci.org/)
 
+[MIT License](LICENSE.md)
+
 [![Build Status](https://travis-ci.org/floydpink/Travis-CI.png?branch=master)](https://travis-ci.org/floydpink/Travis-CI)
 
 Scan QR code to install this app on your Android device:
