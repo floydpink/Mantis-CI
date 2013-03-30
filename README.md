@@ -1,5 +1,5 @@
 Travis-CI
-=========
+==========
 
 An Android app (done in HTML5 using PhoneGap/Cordova) for [Travis-CI](https://travis-ci.org/)
 
