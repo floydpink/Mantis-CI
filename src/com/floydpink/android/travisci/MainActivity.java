@@ -12,4 +12,17 @@ public class MainActivity extends DroidGap
         super.onCreate(savedInstanceState);
         super.loadUrl("file:///android_asset/www/xp/index.html");
     }
+	@Override
+	public void onStart()
+	{
+		super.onStart();
+		EasyTracker.getInstance().activityStart(this);
+	}
+
+	@Override
+	public void onStop()
+	{
+		super.onStop();
+		EasyTracker.getInstance().activityStop(this);
+	}
 }
