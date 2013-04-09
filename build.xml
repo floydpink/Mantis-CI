@@ -84,8 +84,6 @@
          or "<file>" to match only files. Default is to match both.
        - Match is not case-sensitive.
 
-
-
   -->
 
   <property
