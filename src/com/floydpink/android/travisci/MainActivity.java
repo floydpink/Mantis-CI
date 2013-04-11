@@ -4,6 +4,8 @@ import android.os.Bundle;
 
 import org.apache.cordova.*;
 
+import com.google.analytics.tracking.android.EasyTracker;
+
 public class MainActivity extends DroidGap
 {
     @Override
