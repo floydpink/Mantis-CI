@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project
     name="TravisCI"
-    default="help">
+    default="help" >
 
-  <!--
+    <!--
        The local.properties file is created and updated by the 'android' tool.
        It contains the path to the SDK. It should *NOT* be checked into
-       Version Control Systems.
-  -->
+       Version Control Systems.
+    -->
 
-  <property file="local.properties"/>
+    <property file="local.properties" />
 
-  <!--
+    <!--
        if sdk.dir was not set from one of the property file, then
        get it from the ANDROID_HOME env var.
        This must be done before we load project.properties since
-       the proguard config can use sdk.dir
-  -->
+       the proguard config can use sdk.dir
+    -->
 
-  <property environment="env"/>
+    <property environment="env" />
 
-  <condition
-      property="sdk.dir"
-      value="${env.ANDROID_HOME}">
+    <condition
+        property="sdk.dir"
+        value="${env.ANDROID_HOME}" >
 
-    <isset property="env.ANDROID_HOME"/>
-  </condition>
+        <isset property="env.ANDROID_HOME" />
+    </condition>
 
-  <!--
+    <!--
        The ant.properties file can be created by you. It is only edited by the
        'android' tool to add properties to it.
        This is the place to change some Ant specific build properties.
@@ -45,13 +45,12 @@
        be updated using the 'android' tool with the 'update' action.
 
        This file is an integral part of the build system for your
-       application and should be checked into Version Control Systems.
+       application and should be checked into Version Control Systems.
+    -->
 
-  -->
+    <property file="ant.properties" />
 
-  <property file="ant.properties"/>
-
-  <!--
+    <!--
        The project.properties file is created and updated by the 'android'
        tool, as well as ADT.
 
@@ -60,19 +59,18 @@
        (or in .classpath for Eclipse projects).
 
        This file is an integral part of the build system for your
-       application and should be checked into Version Control Systems.
+       application and should be checked into Version Control Systems.
+    -->
 
-  -->
+    <loadproperties srcFile="project.properties" />
 
-  <loadproperties srcFile="project.properties"/>
+    <!-- quick check on sdk.dir -->
 
-  <!-- quick check on sdk.dir -->
+    <fail
+        message="sdk.dir is missing. Make sure to generate local.properties using &apos;android update project&apos; or to inject it through the ANDROID_HOME environment variable."
+        unless="sdk.dir" />
 
-  <fail
-      message="sdk.dir is missing. Make sure to generate local.properties using &apos;android update project&apos; or to inject it through the ANDROID_HOME environment variable."
-      unless="sdk.dir"/>
-
-  <!--
+    <!--
        'aapt.ignore.assets' is the list of file patterns to ignore under /res and /assets.
        Default is "!.svn:!.git:.*:<dir>_*:!CVS:!thumbs.db:!picasa.ini:!*.scc:*~"
 
@@ -82,15 +80,14 @@
        - The first character flag ! avoids printing a warning.
        - Pattern can have the flag "<dir>" to match only directories
          or "<file>" to match only files. Default is to match both.
-       - Match is not case-sensitive.
+       - Match is not case-sensitive.
+    -->
 
-  -->
+    <property
+        name="aapt.ignore.assets"
+        value="!.svn:!.git:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*.scc:*~:node_modules*:Gruntfile.js:package.json:README.md:lib:app:templates" />
 
-  <property
-      name="aapt.ignore.assets"
-      value="!.svn:!.git:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*.scc:*~:node_modules*:Gruntfile.js:package.json:README.md:lib:app:templates"/>
-
-  <!--
+    <!--
       Import per project custom build rules if present at the root of the project.
       This is the place to put custom intermediary targets such as:
           -pre-build
@@ -100,15 +97,14 @@
                          If this is not done in place, override ${out.dex.input.absolute.dir})
           -post-package
           -post-build
-          -pre-clean
+          -pre-clean
+    -->
 
-  -->
+    <import
+        file="custom_rules.xml"
+        optional="true" />
 
-  <import
-      file="custom_rules.xml"
-      optional="true"/>
-
-  <!--
+    <!--
        Import the actual build file.
 
        To customize existing targets, there are two options:
@@ -125,37 +121,34 @@
        ****** IMPORTANT ******
        ***********************
        In all cases you must update the value of version-tag below to read 'custom' instead of an integer,
-       in order to avoid having your file be overridden by tools such as "android update project"
+       in order to avoid having your file be overridden by tools such as "android update project"
+    -->
+    <!-- version-tag: 1 -->
 
+    <import file="${sdk.dir}/tools/ant/build.xml" />
 
+    <target name="runonly" >
 
-  -->
-  <!-- version-tag: 1 -->
+        <exec executable="adb" >
 
-  <import file="${sdk.dir}/tools/ant/build.xml"/>
+            <arg value="shell" />
 
-  <target name="runonly">
+            <arg value="am" />
 
-    <exec executable="adb">
+            <arg value="start" />
 
-      <arg value="shell"/>
+            <arg value="-a" />
 
-      <arg value="am"/>
+            <arg value="android.intent.action.MAIN" />
 
-      <arg value="start"/>
+            <arg value="-n" />
 
-      <arg value="-a"/>
+            <arg value="com.floydpink.android.travisci/.MainActivity" />
+        </exec>
+    </target>
 
-      <arg value="android.intent.action.MAIN"/>
-
-      <arg value="-n"/>
-
-      <arg value="com.floydpink.android.travisci/.MainActivity"/>
-    </exec>
-  </target>
-
-  <target
-      name="run"
-      depends="clean, debug, installd, runonly"/>
+    <target
+        name="run"
+        depends="clean, debug, installd, runonly" />
 
 </project>
