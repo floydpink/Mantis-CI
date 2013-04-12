@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-    name="TravisCI"
-    default="help" >
+<project name="TravisCI" default="help" >
 
     <!--
        The local.properties file is created and updated by the 'android' tool.
        It contains the path to the SDK. It should *NOT* be checked into
-       Version Control Systems.
+       Version Control Systems.
+
     -->
 
     <property file="local.properties" />
@@ -15,7 +14,8 @@
        if sdk.dir was not set from one of the property file, then
        get it from the ANDROID_HOME env var.
        This must be done before we load project.properties since
-       the proguard config can use sdk.dir
+       the proguard config can use sdk.dir
+
     -->
 
     <property environment="env" />
@@ -45,7 +45,8 @@
        be updated using the 'android' tool with the 'update' action.
 
        This file is an integral part of the build system for your
-       application and should be checked into Version Control Systems.
+       application and should be checked into Version Control Systems.
+
     -->
 
     <property file="ant.properties" />
@@ -59,7 +60,8 @@
        (or in .classpath for Eclipse projects).
 
        This file is an integral part of the build system for your
-       application and should be checked into Version Control Systems.
+       application and should be checked into Version Control Systems.
+
     -->
 
     <loadproperties srcFile="project.properties" />
@@ -80,7 +82,8 @@
        - The first character flag ! avoids printing a warning.
        - Pattern can have the flag "<dir>" to match only directories
          or "<file>" to match only files. Default is to match both.
-       - Match is not case-sensitive.
+       - Match is not case-sensitive.
+
     -->
 
     <property
@@ -97,7 +100,8 @@
                          If this is not done in place, override ${out.dex.input.absolute.dir})
           -post-package
           -post-build
-          -pre-clean
+          -pre-clean
+
     -->
 
     <import
@@ -121,7 +125,8 @@
        ****** IMPORTANT ******
        ***********************
        In all cases you must update the value of version-tag below to read 'custom' instead of an integer,
-       in order to avoid having your file be overridden by tools such as "android update project"
+       in order to avoid having your file be overridden by tools such as "android update project"
+
     -->
     <!-- version-tag: 1 -->
 
