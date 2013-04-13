@@ -820,6 +820,10 @@ section #title .credits.right {
   float: right;
 }
 
+.screenshots img {
+  width : 320px;
+}
+
 @media print, screen and (max-width: 720px) {
   #title .credits {
     display: block;
