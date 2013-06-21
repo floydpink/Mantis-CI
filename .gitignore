@@ -21,3 +21,4 @@ local.properties
 
 # Miscellaneous
 .idea
+.DS_Store
