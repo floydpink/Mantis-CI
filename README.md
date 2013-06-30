@@ -20,7 +20,3 @@ Travis-CI build status:
     </a>
   </p>
 </div>
- 
-#### Screenshots
- 
- ![splash screen](https://raw.github.com/floydpink/Travis-CI/gh-pages/images/image.png) ![recent repositories](https://raw.github.com/floydpink/Travis-CI/gh-pages/images/image_1.png) ![favorite repositories](https://raw.github.com/floydpink/Travis-CI/gh-pages/images/image_2.png) ![credits](https://raw.github.com/floydpink/Travis-CI/gh-pages/images/image_3.png)
