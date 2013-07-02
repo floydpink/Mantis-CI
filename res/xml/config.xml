@@ -18,24 +18,25 @@
        under the License.
 -->
 <cordova>
-    <!--
-    access elements control the Android whitelist.
-    Domains are assumed blocked unless set otherwise
-     -->
+  <!--
+  access elements control the Android whitelist.
+  Domains are assumed blocked unless set otherwise
+   -->
 
-    <access origin="http://127.0.0.1*"/> <!-- allow local pages -->
+  <access origin="http://127.0.0.1*"/>
+  <!-- allow local pages -->
 
-    <!-- <access origin="https://example.com" /> allow any secure requests to example.com -->
-    <!-- <access origin="https://example.com" subdomains="true" /> such as above, but including subdomains, such as www -->
-    <access origin=".*"/>
+  <!-- <access origin="https://example.com" /> allow any secure requests to example.com -->
+  <!-- <access origin="https://example.com" subdomains="true" /> such as above, but including subdomains, such as www -->
+  <access origin=".*"/>
 
-    <!-- <content src="http://mysite.com/myapp.html" /> for external pages -->
-    <content src="index.html" />
+  <!-- <content src="http://mysite.com/myapp.html" /> for external pages -->
+  <content src="index.html"/>
 
-    <log level="DEBUG"/>
-    <preference name="useBrowserHistory" value="true" />
-    <preference name="exit-on-suspend" value="false" />
-<plugins>
+  <log level="DEBUG"/>
+  <preference name="useBrowserHistory" value="true"/>
+  <preference name="exit-on-suspend" value="false"/>
+  <plugins>
     <plugin name="App" value="org.apache.cordova.App"/>
     <plugin name="Geolocation" value="org.apache.cordova.GeoBroker"/>
     <plugin name="Device" value="org.apache.cordova.Device"/>
@@ -52,11 +53,13 @@
     <plugin name="Capture" value="org.apache.cordova.Capture"/>
     <plugin name="Battery" value="org.apache.cordova.BatteryListener"/>
     <plugin name="SplashScreen" value="org.apache.cordova.SplashScreen"/>
-    <plugin name="Echo" value="org.apache.cordova.Echo" />
+    <plugin name="Echo" value="org.apache.cordova.Echo"/>
     <plugin name="Globalization" value="org.apache.cordova.Globalization"/>
     <plugin name="InAppBrowser" value="org.apache.cordova.InAppBrowser"/>
     <!-- Custom plugin for websocket support -->
-    <plugin name="WebSocket" value="com.phonegap.plugins.websocket.WebSocket" />
-</plugins>
+    <plugin name="WebSocket" value="com.phonegap.plugins.websocket.WebSocket"/>
+    <!-- Custom plugin for Push Notification support -->
+    <plugin name="PushPlugin" value="com.plugin.gcm.PushPlugin"/>
+  </plugins>
 </cordova>
 
