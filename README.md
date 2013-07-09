@@ -21,6 +21,4 @@ Travis-CI build status:
   </p>
 </div>
  
-#### Screenshots
- 
- ![splash screen](https://raw.github.com/floydpink/Travis-CI/gh-pages/images/image.png) ![recent repositories](https://raw.github.com/floydpink/Travis-CI/gh-pages/images/image_1.png) ![favorite repositories](https://raw.github.com/floydpink/Travis-CI/gh-pages/images/image_2.png) ![credits](https://raw.github.com/floydpink/Travis-CI/gh-pages/images/image_3.png)
+[![githalytics.com alpha](https://cruel-carlota.gopagoda.com/b3522e75563951b5ad97075ab49444e8 "githalytics.com")](http://githalytics.com/floydpink/Travis-CI)
