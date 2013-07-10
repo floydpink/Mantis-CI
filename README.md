@@ -20,3 +20,5 @@ Travis-CI build status:
     </a>
   </p>
 </div>
+ 
+[![githalytics.com alpha](https://cruel-carlota.gopagoda.com/b3522e75563951b5ad97075ab49444e8 "githalytics.com")](http://githalytics.com/floydpink/Travis-CI)
