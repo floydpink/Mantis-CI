@@ -88,7 +88,7 @@
 
   <property
       name="aapt.ignore.assets"
-      value="!.svn:!.git:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*.scc:*~:node_modules*:Gruntfile.js:package.json:README.md:lib:app:templates"/>
+      value="!.svn:!.git:.*:&lt;dir>_*:!CVS:!thumbs.db:!picasa.ini:!*.scc:*~:main.min.js:jquery.mobile-1.3.0.css:style.css:node_modules*:git-describe:localServer.js:Gruntfile.js:package.json:README.md:lib:app:templates"/>
 
   <!--
     Import per project custom build rules if present at the root of the project.
