@@ -22,5 +22,6 @@ Travis-CI build status:
 </div>
  
 [![githalytics.com alpha](https://cruel-carlota.gopagoda.com/b3522e75563951b5ad97075ab49444e8 "githalytics.com")](http://githalytics.com/floydpink/Travis-CI)
+
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/floydpink/Travis-CI/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
