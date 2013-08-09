@@ -16,17 +16,17 @@
 # specific language governing permissions and limitations
 # under the License.
 
-emulator_images=`android list avds | grep "Name:" | cut -f 2 -d ":"`
-emulator_list=($emulator_images)
-if [[ ${#emulator_list[@]} > 0 ]] ; then
-    for i in ${emulator_list[@]}
-    do
-        echo $i
-    done
-    exit 0
+set -e
+
+CORDOVA_PATH=$( cd "$( dirname "$0" )" && pwd -P)
+PROJECT_PATH="$(dirname "$CORDOVA_PATH")"
+
+VERSION_FILE_PATH="$PROJECT_PATH/assets/www/cordova.js"
+
+if [ -f "$VERSION_FILE_PATH" ]; then
+    JSVersion=$(sed -n '2,2p' $VERSION_FILE_PATH)
+    echo $JSVersion | sed -e 's/\/\/ //'| cut -f 1 -d '-'
 else
-    echo "No emulators found, if you would like to create an emulator follow the instructions"
-    echo " provided here : http://developer.android.com/tools/devices/index.html"
-    echo " Or run 'android create avd --name <name> --target <targetID>' in on the command line."
-    exit 2
+    echo "The file \"$VERSION_FILE_PATH\" does not exist."
+    exit 1
 fi
