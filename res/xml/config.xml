@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <widget id="com.floydpink.android.travisci" version="0.9.4" xmlns="http://www.w3.org/ns/widgets">
-  <name>TravisCI</name>
+  <name>MantisCI</name>
   <description>
     Android &amp; iOS applications (done in PhoneGap) for Travis CI.
   </description>
-  <author email="imbleedingme@googlemail.com" href="http://floydpink.github.com/Travis-CI/">
+  <author email="imbleedingme@googlemail.com" href="http://floydpink.github.io/Mantis-CI/">
     Floyd Pink
   </author>
   <access origin="*"/>

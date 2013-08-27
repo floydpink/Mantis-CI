@@ -7,7 +7,7 @@ This app is not affiliated with Travis CI™. Travis CI is the registered tradem
 
 An Android app (done in HTML5 using PhoneGap/Cordova) for [Travis CI™](https://travis-ci.org/)
 
-[![Build Status](https://travis-ci.org/floydpink/Travis-CI.png?branch=master)](https://travis-ci.org/floydpink/Travis-CI)
+[![Build Status](https://travis-ci.org/floydpink/Mantis-CI.png?branch=master)](https://travis-ci.org/floydpink/Mantis-CI)
 
 [MIT License](LICENSE.md)
 
