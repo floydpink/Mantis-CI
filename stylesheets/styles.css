@@ -390,7 +390,7 @@ fieldset {
 
 /*
  * 1. Corrects color not being inherited in IE6/7/8/9
- * 2. Corrects text not wrapping in FF3 
+ * 2. Corrects text not wrapping in FF3
  * 3. Corrects alignment displayed oddly in IE6/7
  */
 legend {
@@ -814,6 +814,16 @@ section #title h1 {
   font-size           : 40px;
   text-align          : center;
   line-height         : 36px;
+  -webkit-text-shadow : 3px 3px 3px #000000;
+  text-shadow         : 3px 3px 3px #000000;
+}
+
+section #title h2 {
+  font-family         : 'OpenSansLight', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight         : normal;
+  font-size           : 20px;
+  text-align          : center;
+  line-height         : 32px;
   -webkit-text-shadow : 3px 3px 3px #000000;
   text-shadow         : 3px 3px 3px #000000;
 }
