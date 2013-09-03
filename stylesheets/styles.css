@@ -880,6 +880,10 @@ section #title .credits.right {
 }
 
 @media print, screen and (max-width: 480px) {
+  section #title h2 {
+    font-size : 18px;
+  }
+
   #header {
     margin-top : -20px;
   }
